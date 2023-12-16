@@ -16,18 +16,18 @@ public class Hand : MonoBehaviour
     public IObservable<Card> OnCardSelected { get { return cardSubject; } }
     ISubject<Card> cardSubject = new Subject<Card>();
 
-
     private void Start()
     {
         Draw(3);
     }
 
-    public Card TakeCard()
+    public Card TakeSelectedCard()
     {
         var card = new Card(selectedCard.Card);
         cardsInHand.Remove(selectedCard);
         selectedCard.Destroy();
         selectedCard = null;
+        cardSubject.OnNext(null);
         return card;
     }
 
@@ -37,6 +37,8 @@ public class Hand : MonoBehaviour
         for(int i = 0 ; i < amount; i++)
         {
             var cardData = deck.Draw();
+            if (cardData == null) return;
+
             cards.Add(cardData);
 
             var spawnedCardInHand = Instantiate(cardInHandPrefab);
@@ -49,7 +51,6 @@ public class Hand : MonoBehaviour
                 selectedCard.Highlight(true);
                 cardSubject.OnNext(selectedCard.Card);
             }).AddTo(spawnedCardInHand);
-
 
             cardsInHand.Add(spawnedCardInHand);
             cardPlacer.PlaceCards(cardsInHand, cards);

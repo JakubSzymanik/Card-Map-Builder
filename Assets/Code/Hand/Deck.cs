@@ -14,11 +14,11 @@ public class Deck : MonoBehaviour
         for(int i = 0; i < deckData.Cards.Count; i++) 
         {
             var cd = deckData.Cards[i].card;
-            cards.Add(new Card(cd.CardName, cd.Description, cd.Image, cd.TilePrefab));
+            cards.Add(new Card(cd));
         }
         Shuffle();
     }
-    private void Shuffle()
+    public void Shuffle()
     {
         for (int i = cards.Count - 1; i > 1; i--)
         {
@@ -31,6 +31,8 @@ public class Deck : MonoBehaviour
 
     public Card Draw()
     {
+        if (cards.Count <= 0) return null;
+
         var card = cards[cards.Count - 1]; 
         cards.RemoveAt(cards.Count - 1);
         return card;

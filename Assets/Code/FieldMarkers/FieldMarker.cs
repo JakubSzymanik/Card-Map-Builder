@@ -21,7 +21,7 @@ public class FieldMarker : MonoBehaviour
 
         this.OnMouseDownAsObservable()
             .Where(_=>active)
-            .Subscribe(_ => posSubject.OnNext(GridPos.WorldToGridPos(transform.position)))
+            .Subscribe(_ => posSubject.OnNext(GridUtility.WorldToGridPos(transform.position)))
             .AddTo(this);
     }
 

@@ -17,3 +17,6 @@ MonoBehaviour:
     Description: +1 Max HP
     Image: {fileID: 21300000, guid: 56085c09723e9134e889c3085b7a7f5b, type: 3}
     TilePrefab: {fileID: 4655791177408033234, guid: 4f072686136ab864a8fc54ad0142cd3b, type: 3}
+    StatEffects:
+    - Type: {fileID: 11400000, guid: b4296e0c953d09a40b523cacaf7eda9f, type: 2}
+      Value: 1

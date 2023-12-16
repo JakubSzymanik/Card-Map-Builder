@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using DG.Tweening;
 using UniRx;
-using System;
 using UniRx.Triggers;
+using UniRx.Operators;
+using UnityEngine.UI;
 
 public class CardInHand : MonoBehaviour
 {
@@ -18,12 +20,26 @@ public class CardInHand : MonoBehaviour
     Tween highlightColorTween;
     bool selectable = true;
 
-    public IObservable<CardInHand> OnMouseDown { get { return cardSubject; } }
-    ISubject<CardInHand> cardSubject = new Subject<CardInHand>();
+    public IObservable<CardInHand> OnMouseDown { get { return this.OnMouseDownAsObservable().Where(_ => selectable).Select(_ => this); } }
+    public IObservable<CardInHand> OnDestroy { get { return this.OnDestroyAsObservable().Select(_ => this); } }
 
     void Start()
     {
-        this.OnMouseDownAsObservable().Where(_ => selectable).Subscribe(_ => cardSubject.OnNext(this));
+        this.OnMouseEnterAsObservable()
+            .Where(_=>selectable)
+            .Subscribe(_ =>
+            {
+                scaleTween.Kill();
+                scaleTween = transform.DOScale(1.25f, 0.3f);
+            }).AddTo(this);
+
+        this.OnMouseExitAsObservable()
+            .Where(_=>selectable)
+            .Subscribe(_ =>
+            {
+                scaleTween.Kill();
+                scaleTween = transform.DOScale(1f, 0.3f);
+            }).AddTo(this);
     }
     public void Destroy()
     {
@@ -31,11 +47,7 @@ public class CardInHand : MonoBehaviour
         highlightColorTween.Kill();
         highlightColorTween = highlight.DOFade(0.1f, 0);
         scaleTween.Kill();
-        scaleTween = transform.DOScale(0, 0.2f).OnComplete(() => 
-        {
-            cardSubject.OnCompleted();
-            Destroy(this.gameObject);
-        });
+        scaleTween = transform.DOScale(0, 0.2f).OnComplete(() => Destroy(this.gameObject));
     }
     public void Create(Card card, Vector3 position)
     {
@@ -65,18 +77,5 @@ public class CardInHand : MonoBehaviour
             highlightColorTween.Kill();
             highlightColorTween = highlight.DOFade(0f, 0.3f);
         }
-    }
-
-    private void OnMouseEnter()
-    {
-        if (!selectable) return;
-        scaleTween.Kill();
-        scaleTween = transform.DOScale(1.25f, 0.3f);
-    }
-    private void OnMouseExit()
-    {
-        if(!selectable) return;
-        scaleTween.Kill();
-        scaleTween = transform.DOScale(1f, 0.3f);
     }
 }
