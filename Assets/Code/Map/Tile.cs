@@ -10,8 +10,9 @@ public class Tile : MonoBehaviour
 {
     public Card card { get; private set; }
     public Vector2Int GridPosition { get { return GridUtility.WorldToGridPos(transform.position); } }
-
     public IObservable<Tile> OnMouseDown { get { return this.OnMouseDownAsObservable().Select(_=>this); } }
+
+    Tween scaleTween;
 
     void Start()
     {
@@ -36,5 +37,13 @@ public class Tile : MonoBehaviour
     public void Create(Card card)
     {
         this.card = card;
+    }
+
+    public Card Activate()
+    {
+        //scaleTween?.Kill();
+        //scaleTween = transform.DOScale(Vector3.one * 1.2f, 0.2f);
+        //do something
+        return card;
     }
 }

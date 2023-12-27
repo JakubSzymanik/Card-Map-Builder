@@ -9,6 +9,7 @@ using UnityEngine;
 public class HeroController : MonoBehaviour
 {
     [SerializeField] HeroMover mover;
+    [SerializeField] HeroStatsHandler statHandler;
 
     public IObservable<bool> OnTurnFinished { get { return OnTurnFinishedSubject; } }
     Subject<bool> OnTurnFinishedSubject = new Subject<bool> ();
@@ -24,7 +25,8 @@ public class HeroController : MonoBehaviour
     private void Start()
     {
         mover.OnActionFinished.Where(_ => currentTarget != null)
-            .Subscribe(_ => Action()).AddTo(this);
+            .Subscribe(_ => StartCoroutine(ActionFinished()))
+            .AddTo(this);
     }
     public void StartTurn(Vector2Int target, List<Tile> tiles, List<Enemy> enemies)
     {
@@ -40,11 +42,12 @@ public class HeroController : MonoBehaviour
         enemies = null;
         currentTarget = null;
         currentDirection = Vector2Int.zero;
+        statHandler.EndTurn();
         OnTurnFinishedSubject.OnNext(true);
     }
     void Action()
     {
-        if (GridPosition == currentTarget) { EndTurn(); return; }
+        //if (GridPosition == currentTarget) { EndTurn(); return; }
 
         Enemy nextEnemy = GetEnemy(GridPosition + currentDirection);
         if (nextEnemy == null)
@@ -54,10 +57,18 @@ public class HeroController : MonoBehaviour
             mover.Fight(nextEnemy);
             return;
         }
-
-        //Handle tile effects
+    }
+    IEnumerator ActionFinished()
+    {
         Tile tile = GetTile(GridPosition);
-        //tile.Effect()
+        Card card = tile.Activate();
+        if(card != null && card.StatEffects != null && card.StatEffects.Count > 0)
+            statHandler.AddStatEffects(tile.card.StatEffects);
+
+        if (GridPosition == currentTarget) { EndTurn(); yield break ; }
+
+        yield return new WaitForSeconds(0.5f);
+        Action();
     }
 
     Enemy GetEnemy(Vector2Int pos)
