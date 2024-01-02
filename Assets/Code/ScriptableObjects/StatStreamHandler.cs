@@ -11,11 +11,10 @@ using Unity.VisualScripting.FullSerializer;
 public class StatStreamHandler : ScriptableObject
 {
     Subject<StatValueDTO> statSubject = new Subject<StatValueDTO>();
-    public IObservable<StatValueDTO> statStream { get { return statSubject; } }
+    public IObservable<StatValueDTO> StatStream { get { return statSubject; } }
 
     public void PublishStatChange(StatValueDTO stat)
     {
-        Debug.Log(stat.Type);
         statSubject.OnNext(stat);
     }
 }

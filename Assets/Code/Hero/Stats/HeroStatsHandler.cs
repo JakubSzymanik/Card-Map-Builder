@@ -10,8 +10,9 @@ public class HeroStatsHandler : MonoBehaviour
     [SerializeField] List<StatValue> stats = new List<StatValue>();
     
     List<StatEffect> thisTurnEffects = new List<StatEffect>();
+    List<StatEffect> temporaryStatEffects = new List<StatEffect>();
 
-    public void AddStatEffects(List<StatEffect> effects)
+    public void AddPermanentStatEffects(List<StatEffect> effects) //stat effects from fields
     {
         if (effects == null || effects.Count == 0)
             return;
@@ -34,6 +35,15 @@ public class HeroStatsHandler : MonoBehaviour
                 Combo = comboValue
             });
         }
+    }
+
+    public void AddTemporaryStatEffects(List<StatEffect> effects)
+    {
+
+    }
+    private void CleanTemporaryStatEffects()
+    {
+
     }
 
     public void EndTurn()

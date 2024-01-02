@@ -63,7 +63,7 @@ public class HeroController : MonoBehaviour
         Tile tile = GetTile(GridPosition);
         Card card = tile.Activate();
         if(card != null && card.StatEffects != null && card.StatEffects.Count > 0)
-            statHandler.AddStatEffects(tile.card.StatEffects);
+            statHandler.AddPermanentStatEffects(tile.card.StatEffects);
 
         if (GridPosition == currentTarget) { EndTurn(); yield break ; }
 

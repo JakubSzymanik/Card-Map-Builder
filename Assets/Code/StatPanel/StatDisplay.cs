@@ -6,21 +6,13 @@ using DG.Tweening;
 
 public class StatDisplay : MonoBehaviour
 {
+    [SerializeField] private StatType type;
     [SerializeField] private TextMeshProUGUI statValueText;
+    
+    public StatType Type { get { return type; } }
+
     int value;
-
     Tween scaleTween;
-
-    int pressCounter = 0;
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeValue(pressCounter * 4);
-            pressCounter++;
-        }
-    }
 
     public void ChangeValue(int target)
     {

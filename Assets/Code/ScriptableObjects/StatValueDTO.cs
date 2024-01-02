@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StatValueDTO
 {
-    public ValueType Type;
+    public StatType Type;
     public int PreviousValue;
     public int Value;
     public int Change;
