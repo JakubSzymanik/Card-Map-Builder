@@ -15,5 +15,5 @@ MonoBehaviour:
   relations:
   - baseStatType: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
     resultingStatType: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
-    levelRequirements: 0400000004000000040000000400000004000000
-    stepAfterMaxReq: 0
+    levelRequirements: 000000000300000006000000090000000c000000
+    stepAfterMaxReq: 3

@@ -7,11 +7,11 @@ public class StatsLevelsService : ScriptableObject
 {
     [SerializeField] StatRelations relations;
 
-    void GetStatLevels(StatValue stat, out int relativeStat, out StatValue resultingHigherStat)
+    public void GetStatLevels(StatValue stat, out int relativeStat, out StatValue resultingHigherStat)
     {
         StatType baseType = stat.Type;
         StatRelation relation = relations.relations.Find(v => v.baseStatType == baseType);
-        if(relation == null) { throw new System.Exception("No stat relation found"); }
+        if(relation == null) { resultingHigherStat = null; relativeStat = 0; return; }
 
         relation.GetValues(stat.Value, out relativeStat, out int resultingLevel);
         resultingHigherStat = new StatValue(relation.resultingStatType, resultingLevel);

@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statStreamHandler: {fileID: 11400000, guid: d624b0fb27480174496c21856338dc83, type: 2}
+  statsLevelsService: {fileID: 11400000, guid: f215fee026da9014d80789e5309151bd, type: 2}
   stats:
   - Type: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
     Value: 1
@@ -1016,6 +1017,8 @@ MonoBehaviour:
   - Type: {fileID: 11400000, guid: b4296e0c953d09a40b523cacaf7eda9f, type: 2}
     Value: 1
   - Type: {fileID: 11400000, guid: 72bb569986d136845be7c6740ba5a360, type: 2}
+    Value: 1
+  - Type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
     Value: 1
 --- !u!1001 &741554023
 PrefabInstance:
@@ -1476,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4742b1e267f4a494fbe5ebcc7c2605f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
+  type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
   statValueText: {fileID: 1500029460}
 --- !u!1 &1080941651
 GameObject:
@@ -1623,6 +1626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsPanels:
   - {fileID: 1671046272}
+  - {fileID: 1059333426}
   streamHandler: {fileID: 11400000, guid: d624b0fb27480174496c21856338dc83, type: 2}
 --- !u!1 &1169432712
 GameObject:
