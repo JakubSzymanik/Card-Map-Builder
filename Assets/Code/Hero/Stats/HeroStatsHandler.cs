@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class HeroStatsHandler : MonoBehaviour
 { 
-    //[SerializeField] StatPanel statPanel;
     [SerializeField] StatStreamHandler statStreamHandler;
-    [SerializeField] StatsLevelsService statsLevelsService;
+    //[SerializeField] StatsLevelsService statsLevelsService;
     [SerializeField] List<StatValue> stats = new List<StatValue>();
     
     List<StatEffect> thisTurnEffects = new List<StatEffect>();
@@ -28,21 +27,22 @@ public class HeroStatsHandler : MonoBehaviour
             int previousValue = stat.Value;
             int totalValue = stat.Value += totalAddedValue;
 
-            statsLevelsService.GetStatLevels(stat, out int relativeStat, out StatValue higherStat);
-            if(higherStat != null)
-            {
-                StatValue higherStatListRef = stats.Find(v => v.Type == higherStat.Type);
-                int prevValue = higherStatListRef.Value;
-                higherStatListRef.Value = higherStat.Value;
+            //set connected stats - removing for now
+            //statsLevelsService.GetStatLevels(stat, out int relativeStat, out StatValue higherStat);
+            //if(higherStat != null)
+            //{
+            //    StatValue higherStatListRef = stats.Find(v => v.Type == higherStat.Type);
+            //    int prevValue = higherStatListRef.Value;
+            //    higherStatListRef.Value = higherStat.Value;
 
-                statStreamHandler.PublishStatChange(new StatValueDTO
-                {
-                    Type = higherStat.Type,
-                    Value = higherStat.Value,
-                    PreviousValue = prevValue,
-                    Combo = 0
-                });
-            }
+            //    statStreamHandler.PublishStatChange(new StatValueDTO
+            //    {
+            //        Type = higherStat.Type,
+            //        Value = higherStat.Value,
+            //        PreviousValue = prevValue,
+            //        Combo = 0
+            //    });
+            //}
 
             statStreamHandler.PublishStatChange(new StatValueDTO
             {

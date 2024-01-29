@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//obsolete for now
 [CreateAssetMenu(menuName = "Items/Stats Level Service", fileName = "New Stats Level Service")]
 public class StatsLevelsService : ScriptableObject
 {
