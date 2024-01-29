@@ -18,5 +18,5 @@ MonoBehaviour:
     Image: {fileID: 21300000, guid: b45448985e9700b43a0a9005e9c6430b, type: 3}
     TilePrefab: {fileID: 6977368434607280807, guid: 631d60723cb05e541b617b40472f0dcb, type: 3}
     StatEffects:
-    - Type: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
+    - Type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
       Value: 1

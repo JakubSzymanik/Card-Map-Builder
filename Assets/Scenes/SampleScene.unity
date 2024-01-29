@@ -526,11 +526,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 409993025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4742b1e267f4a494fbe5ebcc7c2605f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 356a06dc086c3374dbe556744c6e6e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
+  type: {fileID: 11400000, guid: db910f3ad76b0c044a22815e3bc1e19b, type: 2}
   statValueText: {fileID: 1633699358}
+  maxType: {fileID: 11400000, guid: 72bb569986d136845be7c6740ba5a360, type: 2}
 --- !u!1001 &483091137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -791,7 +792,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &528515660
 GameObject:
@@ -1079,7 +1080,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &622215831
 GameObject:
@@ -1147,7 +1148,7 @@ Transform:
   - {fileID: 1388365888}
   - {fileID: 916480571}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &672899203
 MonoBehaviour:
@@ -1190,16 +1191,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statStreamHandler: {fileID: 11400000, guid: d624b0fb27480174496c21856338dc83, type: 2}
+  statsLevelsService: {fileID: 11400000, guid: f215fee026da9014d80789e5309151bd, type: 2}
   stats:
-  - Type: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
-    Value: 1
-  - Type: {fileID: 11400000, guid: 591bdd22e8695984a963f501e2541113, type: 2}
-    Value: 1
-  - Type: {fileID: 11400000, guid: b4296e0c953d09a40b523cacaf7eda9f, type: 2}
-    Value: 1
+  - Type: {fileID: 11400000, guid: db910f3ad76b0c044a22815e3bc1e19b, type: 2}
+    Value: 10
   - Type: {fileID: 11400000, guid: 72bb569986d136845be7c6740ba5a360, type: 2}
-    Value: 1
+    Value: 10
   - Type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
+    Value: 2
+  - Type: {fileID: 11400000, guid: 8c168c3c1a718084a98f0a890fb676ef, type: 2}
     Value: 1
 --- !u!1 &730439413
 GameObject:
@@ -2337,7 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4742b1e267f4a494fbe5ebcc7c2605f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
+  type: {fileID: 11400000, guid: 8c168c3c1a718084a98f0a890fb676ef, type: 2}
   statValueText: {fileID: 1693739793}
 --- !u!4 &1259228057
 Transform:
@@ -2898,7 +2898,7 @@ Transform:
   - {fileID: 585862290}
   - {fileID: 483091139}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1656421071
 MonoBehaviour:
@@ -2996,7 +2996,7 @@ Transform:
   - {fileID: 45627612}
   - {fileID: 622215832}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674088514
 MonoBehaviour:
@@ -3195,7 +3195,7 @@ Transform:
   - {fileID: 1039775990}
   - {fileID: 1401468270}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1708486576
 MonoBehaviour:

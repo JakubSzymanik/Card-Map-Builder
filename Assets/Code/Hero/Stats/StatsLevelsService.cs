@@ -8,13 +8,17 @@ public class StatsLevelsService : ScriptableObject
 {
     [SerializeField] StatRelations relations;
 
-    public void GetStatLevels(StatValue stat, out int relativeStat, out StatValue resultingHigherStat)
+    public int GetStatValue(int targetValue, StatType type, out StatType maxType, List<StatValue> stats)
     {
-        StatType baseType = stat.Type;
-        StatRelation relation = relations.relations.Find(v => v.baseStatType == baseType);
-        if(relation == null) { resultingHigherStat = null; relativeStat = 0; return; }
+        var relation = relations.relations.Find(v => v.fluidStatType == type);
+        
+        if (relation == null)
+        {
+            maxType = null;
+            return targetValue;
+        }
 
-        relation.GetValues(stat.Value, out relativeStat, out int resultingLevel);
-        resultingHigherStat = new StatValue(relation.resultingStatType, resultingLevel);
+        maxType = relation.maxStatType;
+        return Mathf.Clamp(targetValue, 0, stats.Find(v => v.Type == relation.maxStatType).Value);
     }
 }

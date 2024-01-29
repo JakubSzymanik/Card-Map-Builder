@@ -6,21 +6,23 @@ using DG.Tweening;
 
 public class StatDisplay : MonoBehaviour
 {
-    [SerializeField] private StatType type;
-    [SerializeField] private TextMeshProUGUI statValueText;
-    
-    public StatType Type { get { return type; } }
+    [SerializeField] protected StatType type;
+    [SerializeField] protected TextMeshProUGUI statValueText;
 
-    int value;
-    Tween scaleTween;
+    protected int value;
+    protected Tween scaleTween;
 
-    public void ChangeValue(int target)
+    public virtual bool HasType(StatType type)
+    {
+        return type == this.type;
+    }
+    public virtual void ChangeValue(StatValueDTO stat)
     {
         StopAllCoroutines();
-        StartCoroutine(ValueChangeCR(target));
+        StartCoroutine(ValueChangeCR(stat.Value));
     }
 
-    IEnumerator ValueChangeCR(int target)
+    private IEnumerator ValueChangeCR(int target)
     {
         scaleTween = statValueText.transform.DOScale(Vector3.one * 1.2f, 0.2f);
         float waitTime = 0.5f / (float)(target - value);

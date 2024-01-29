@@ -19,4 +19,4 @@ MonoBehaviour:
     TilePrefab: {fileID: 7892004168247107077, guid: 3c4fd20e16350894bb869999118a7165, type: 3}
     StatEffects:
     - Type: {fileID: 11400000, guid: 72bb569986d136845be7c6740ba5a360, type: 2}
-      Value: 2
+      Value: 1

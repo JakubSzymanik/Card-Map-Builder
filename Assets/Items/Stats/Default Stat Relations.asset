@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Default Stat Relations
   m_EditorClassIdentifier: 
   relations:
-  - baseStatType: {fileID: 11400000, guid: 62da9c251d8b6a947ad608808bd6d0fc, type: 2}
-    resultingStatType: {fileID: 11400000, guid: 669f0d4bceeaeb641aa466bfbb75cec6, type: 2}
-    levelRequirements: 000000000300000006000000090000000c000000
-    stepAfterMaxReq: 3
+  - fluidStatType: {fileID: 11400000, guid: db910f3ad76b0c044a22815e3bc1e19b, type: 2}
+    maxStatType: {fileID: 11400000, guid: 72bb569986d136845be7c6740ba5a360, type: 2}

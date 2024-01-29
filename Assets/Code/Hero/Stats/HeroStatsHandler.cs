@@ -6,11 +6,25 @@ using UnityEngine;
 public class HeroStatsHandler : MonoBehaviour
 { 
     [SerializeField] StatStreamHandler statStreamHandler;
-    //[SerializeField] StatsLevelsService statsLevelsService;
+    [SerializeField] StatsLevelsService statsLevelsService;
     [SerializeField] List<StatValue> stats = new List<StatValue>();
     
     List<StatEffect> thisTurnEffects = new List<StatEffect>();
     List<StatEffect> temporaryStatEffects = new List<StatEffect>();
+
+    private void Start()
+    {
+        foreach(var stat in stats)
+        {
+            statStreamHandler.PublishStatChange(new StatValueDTO
+            {
+                Type = stat.Type,
+                Value = stat.Value,
+                PreviousValue = stat.Value,
+                Combo = 0
+            });
+        }
+    }
 
     public void AddPermanentStatEffects(List<StatEffect> effects) //stat effects from fields
     {
@@ -26,6 +40,8 @@ public class HeroStatsHandler : MonoBehaviour
             int totalAddedValue = effect.Value + comboValue;
             int previousValue = stat.Value;
             int totalValue = stat.Value += totalAddedValue;
+
+            totalValue = statsLevelsService.GetStatValue(totalValue, stat.Type, out StatType maxType, stats);
 
             //set connected stats - removing for now
             //statsLevelsService.GetStatLevels(stat, out int relativeStat, out StatValue higherStat);
